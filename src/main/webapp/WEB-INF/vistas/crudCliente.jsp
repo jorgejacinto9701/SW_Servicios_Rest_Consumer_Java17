@@ -47,7 +47,6 @@
 						<th>Código</th>
 						<th>Nombre</th>
 						<th>DNI</th>
-						<th>Estado</th>
 						<th>Categoría</th>
 						<th></th>
 						<th></th>
@@ -205,15 +204,13 @@
 						{data: "idCliente",className:'text-center'},
 						{data: "nombre",className:'text-center'},
 						{data: "dni",className:'text-center'},
-						{data: function(row, type, val, meta){
-							return row.estado == 1 ? "Activo" : "Inactivo";  
-						},className:'text-center'},
 						{data: "categoria.descripcion",className:'text-center'},
 						{data: function(row, type, val, meta){
-							return '<button type="button" class="btn btn-info btn-sm" onClick="verFormularioActualiza(\'' + row.idCliente + '\',\'' +  row.nombre   + '\',\'' +  row.dni + '\',\'' +  row.estado + '\',\'' +  row.categoria.idCategoria +'\');">Editar</button>';  
+							var estado = row.estado == 1 ? "Activo" : "Inactivo"; 
+							return '<button type="button" class="btn btn-warning btn-sm" onClick="eliminacionLogica(\'' + row.idCliente +'\');" >'+ estado+'</button>';
 						},className:'text-center'},
 						{data: function(row, type, val, meta){
-							return '<button type="button" class="btn btn-warning btn-sm" onClick="eliminacionLogica(\'' + row.idCliente +'\');" >E.Lógica</button>';
+							return '<button type="button" class="btn btn-info btn-sm" onClick="verFormularioActualiza(\'' + row.idCliente + '\',\'' +  row.nombre   + '\',\'' +  row.dni + '\',\'' +  row.estado + '\',\'' +  row.categoria.idCategoria +'\');">Editar</button>';  
 						},className:'text-center'},
 						{data: function(row, type, val, meta){
 							return '<button type="button" class="btn btn-danger btn-sm"  onClick="eliminacionFisica(\'' + row.idCliente +'\');" >E.Física</button>';
